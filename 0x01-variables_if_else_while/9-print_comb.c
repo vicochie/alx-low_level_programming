@@ -1,35 +1,23 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * main - prints all possible combinations of single-digit numbers
  *
- * Description: Prints all possible combinations of single-digit numbers.
- * Numbers must be separated by ,, followed by a space. Numbers should be
- * printed in ascending order.
- *
- * Return: Always 0 (Success)
+ * Return: Always 0.
  */
 int main(void)
 {
-int i, j;
+int i;
 
-for (i = 0; i < 9; i++)
-{
-for (j = i + 1; j < 10; j++)
+for (i = 0; i < 10; i++)
 {
 putchar(i + '0');
-putchar(',');
-putchar(' ');
-putchar(j + '0');
-
-if (i == 8 && j == 9)
-break;
-
+if (i != 9)
+{
 putchar(',');
 putchar(' ');
 }
 }
-
 putchar('\n');
 
 return (0);
