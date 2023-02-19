@@ -18,11 +18,11 @@ int main(void)
 
 	for (f = 0; f <= 9; f++)
 	{
-		for (s = 0; s <= 9; s++)
+		for (s = f + 1; s <= 9; s++)
 		{
 			putchar(f + '0');
 			putchar(s + '0');
-			if (f != 9 || s != 9)
+			if (f < 8 || s < 9)
 			{
 				putchar(',');
 				putchar(' ');
