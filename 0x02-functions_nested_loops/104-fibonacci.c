@@ -13,7 +13,7 @@
 
 int main(void)
 {
-	int prev = 1, curr = 2, next;
+	int i, prev = 1, curr = 2, next;
 
 	printf("%d, %d", prev, curr);
 
