@@ -17,5 +17,7 @@ int main(void)
 
 	printf("%ld\n", i);
 
+	printf("\n");
+
 	return (0);
 }
