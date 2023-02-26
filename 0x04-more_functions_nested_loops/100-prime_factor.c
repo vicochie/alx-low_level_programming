@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 int main(void)
 {
@@ -16,8 +17,6 @@ int main(void)
 	}
 
 	printf("%ld\n", i);
-
-	printf("\n");
 
 	return (0);
 }
