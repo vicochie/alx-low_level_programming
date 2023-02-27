@@ -10,8 +10,8 @@
 
 int main(void)
 {
-	int passwor_length = 10;
-	char password[password_lenght + 1];
+	int password_length = 10;
+	char password[password_length + 1];
 	int i;
 
 	srand(time(NULL));
@@ -27,4 +27,3 @@ int main(void)
 
 	return (0);
 }
-
