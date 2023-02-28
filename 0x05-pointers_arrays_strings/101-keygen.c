@@ -10,20 +10,47 @@
 
 int main(void)
 {
-	int password_length = 10;
-	char password[password_length + 1];
-	int i;
+	char password[84];
+	int index = 0, sum = 0, diff_half1, diff_half2;
 
-	srand(time(NULL));
+	srand(time(0));
 
-	for (i = 0; i < password_length; i++)
+	while (sum < 2772)
+
 	{
-		password[i] = rand() % 26 + 'a';
+		password[index] = 33 + rand() % 94;
+		sum += password[index++];
 	}
 
-	password[password_length] = '\0';
+	password[index] = '\0';
 
-	printf("Valid password: %s\n", password);
+	if (sum != 2772)
+	{
+		diff_half1 = (sum - 2772) / 2;
+		diff_half2 = (sum - 2772) / 2;
 
+		if ((sum - 2772) % 2 != 0)
+			diff_half1++;
+		for (index = 0; password[index]; index++)
+		{
+			if (password[index] >= (33 + diff_half1))
+			{
+				password[index] -= diff_half1;
+				break;
+			}
+		}
+
+		for (index = 0; password[index]; index++)
+		{
+			if (password[index] >= (33 + diff_half2))
+			{
+				password[index] -= diff_half2;
+				break;
+			}
+		}
+	}
+
+	printf("%s", password);
 	return (0);
 }
+
