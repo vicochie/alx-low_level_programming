@@ -1,5 +1,7 @@
 #include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * puts2 - Prinnts every other caharacter of a string.
