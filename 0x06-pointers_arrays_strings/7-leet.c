@@ -10,19 +10,19 @@
 char *leet(char *str)
 {
 	int i, j;
-	char *leet_str = str;
+	char s1[] = "aAeEoOtTlL";
+	char s2[] = "4433007711";
 
-	for (i = 0; leet_str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		for (j = 0; "aAeEoOtTlL"[j] != '\0'; j++)
+		for (j = 0; j < 10; j++)
 		{
-			if (leet_str[i] == "aAeEoOtTlL"[j])
+			if (str[i] == s1[j])
 			{
-				leet_str[i] = "4 3 0 7 1"[j];
-				break;
+				str[i] = s2[j];
 			}
 		}
 	}
 
-	return (leet_str);
+	return (str);
 }
