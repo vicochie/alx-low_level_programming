@@ -20,8 +20,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	while (n2[len2])
 		len2++;
 
-	if (len1 >= size_r || len2 >= size_r ||
-			(len1 + 1 >= size_r && len2 + 1 >= size_r))
+	if (len1 >= size_r || len2 >= size_r || ((len1 + 1 >= size_r && len2 + 1 >= size_r))
 		return (0);
 	r[size_r - 1] = '\0';
 	len = size_r - 2;
