@@ -1,6 +1,32 @@
 #include "main.h"
 
 /**
+ * rev_string - reverse array
+ * @n: integer params
+ * Return: 0
+ */
+
+void rev_string(char *n)
+{
+	int i = 0;
+	int j = 0;
+	char temp;
+
+	while (*(n + i) != '\0')
+	{
+		i++;
+	}
+	i--;
+
+	for (j = 0; j < i; j++, i--)
+	{
+		temp = *(n + j);
+		*(n + j) = *(n + i);
+		*(n + i) = temp;
+	}
+}
+
+/**
  * infinite_add - adds two numbers
  * @n1: first number to add
  * @n2: second number to add
@@ -13,45 +39,43 @@
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int len1 = 0, len2 = 0, len = 0, digit, carry = 0;
+	int overflow = 0, i = 0, j = 0, digits = 0;
+	int val1 = 0, val2 = 0, temp_tot = 0;
 
-	while (n1[len1])
-		len1++;
-	while (n2[len2])
-		len2++;
+	while (*(n1 + i) != '\0')
+		i++;
+	while (*(n2 + j) != '\0')
+		j++;
+	i--;
+	j--;
 
-	if (len1 >= size_r || len2 >= size_r || ((len1 + 1 >= size_r && len2 + 1 >= size_r))
+	if (j >= size_r || i >= size_r)
 		return (0);
-	r[size_r - 1] = '\0';
-	len = size_r - 2;
-	len1--;
-	len2--;
-
-	while (len1 >= 0 || len2 >= 0)
+	while (j >= 0 || i >= 0 || overflow == 1)
 	{
-		digit = carry;
-		if (len1 >= 0)
-			digit += n1[len1--] - '0';
-		if (len2 >= 0)
-			digit += n2[len2--] - '0';
-
-		if (digit > 9)
-		{
-			carry = 1;
-			digit -= 10;
-		}
+		if (i < 0)
+			val1 = 0;
 		else
-			carry = 0;
-
-		r[len--] = digit + '0';
-	}
-
-	if (carry == 1)
-	{
-		if (len < 0)
+			val1 = *(n1 + i) - '0';
+		if (j < 0)
+			val2 = 0;
+		else
+			val2 = *(n2 + j) - '0';
+		temp_tot = val1 + val2 + overflow;
+		if (temp_tot >= 10)
+			overflow = 1;
+		else
+			overflow = 0;
+		if (digits >= (size_r - 1))
 			return (0);
-		r[len--] = carry + '0';
+		*(r + digits) = (temp_tot % 10) + '0';
+		digits++;
+		j--;
+		i--;
 	}
-
-	return (r + len + 1);
+	if (digits == size_r)
+		return (0);
+	*(r + digits) = '\0';
+	rev_string(r);
+	return (r);
 }
